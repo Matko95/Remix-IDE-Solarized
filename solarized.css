@@ -107,7 +107,11 @@
 }
 
 [class^="menu_"] {
-    color: #002B36 !important;
+    background-color: #002B36 !important;
+}
+[class^="menu_"] [class*="active_"] {
+    background-color: #586d74 !important;
+    color: #00303d !important;
 }
 
 [class^="prompt_text_"] {
