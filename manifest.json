@@ -7,7 +7,11 @@
   "content_scripts": [{
     "css": ["solarized.css"],
     "js": ["content.js"],
-    "matches": ["https://remix.ethereum.org/*"]
+    "matches": [
+      "https://remix.ethereum.org/*",
+      "http://127.0.0.1/*",
+      "http://localhost/*"
+    ]
   }],
   "permissions": [
     "activeTab"
