@@ -3,10 +3,11 @@
 
   "name": "Remix IDE - Solarized Dark Theme",
   "description": "This Extension will provide a dark theme for Remix IDE.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "content_scripts": [{
     "css": ["solarized.css"],
-    "js": ["content.js"],
+
+    "js": ["beautify.js", "content.js"],
     "matches": [
       "https://remix.ethereum.org/*",
       "http://127.0.0.1/*",

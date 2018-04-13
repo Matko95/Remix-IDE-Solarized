@@ -31,4 +31,40 @@ function checkDOMChange() {
   setTimeout(checkDOMChange, 300);
 }
 
+function getQueryParams(qs) {
+  qs = qs.split('+').join(' ');
+
+  let params = {},
+    tokens,
+    re = /[?&]?([^=]+)=([^&]*)/g;
+
+  while (tokens = re.exec(qs)) {
+    params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+  }
+
+  return params;
+}
+
+function formatMessage(data) {
+  return {
+    key: 'sol:'+data.name,
+    value: data.code
+  }
+}
+try {
+  let solidityData = JSON.parse(getQueryParams(window.location.toString()).par);
+  let finalCommand = '';
+  let data;
+  for (let i = 0; i < solidityData.length; i++) {
+    data = formatMessage(solidityData[i]);
+    finalCommand += 'localStorage.setItem("' +data.key + '",`'+js_beautify(data.value)+'`);';
+  }
+  console.log(solidityData);
+  console.log(finalCommand);
+} catch (e) {
+  console.error(e);
+}
+
+
+
 checkDOMChange();
